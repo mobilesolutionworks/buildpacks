@@ -19,7 +19,7 @@ jobs:
           set -ex
           
           mkdir -p bin
-          wget https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz -P bin/
+          wget -q https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz -P bin/
           tar xfz bin/pack-v0.33.2-linux.tgz -C bin
           rm bin/pack-v0.33.2-linux.tgz
           
