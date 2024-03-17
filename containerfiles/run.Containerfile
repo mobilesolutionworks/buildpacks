@@ -1,9 +1,9 @@
-FROM docker.funf/oraclelinux:9 as files
+FROM oraclelinux:9 as files
 
 ADD files /files
 RUN chmod 644 /files/etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 
-FROM docker.funf/oraclelinux:9 as oraclelinux
+FROM oraclelinux:9 as oraclelinux
 
 COPY --from=files /files /
 
@@ -19,7 +19,6 @@ RUN yum update -y && yum install -y \
 # Create user and group
 ARG cnb_uid=1000
 ARG cnb_gid=1000
-ENV CNB_INSECURE_REGISTRIES=docker.funf
 
 RUN groupadd cnb --gid ${cnb_gid} && \
   useradd --uid ${cnb_uid} --gid ${cnb_gid} -m -s /bin/bash cnb
