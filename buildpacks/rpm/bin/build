@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+
+echo "RPM Buildpack"
+pwd
+ls -ltR
+
+rpm_layer_dir=${layers_dir}/rpm
+cat > "${rpm_layer_dir}.toml" << EOF
+[types]
+launch = true
+build = true
+cache = true
+EOF
+mkdir -p $rpm_layer_dir
+cp -r . $rpm_layer_dir
+
+launch_layer_dir=${layers_dir}/launch
+cat > "${launch_layer_dir}.toml" << EOF
+[[processes]]
+type = "app"
+command = ["tail", "-f", "/dev/null"]
+default = true
+EOF
+
+exit 0

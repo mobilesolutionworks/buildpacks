@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# 1. GET ARGS
+plan_path=$2
+
+# 2. DECLARE DEPENDENCIES (OPTIONAL)
+echo "RPM Buildpack Detect"
+
+if [[ "${BP_REQUIRES}" == *"rpmdevtools"* ]]; then
+echo "requires: rpmdevtools"
+  cat >>"${plan_path}" <<EOL
+[[requires]]
+name = "rpmdevtools"
+EOL
+fi
+

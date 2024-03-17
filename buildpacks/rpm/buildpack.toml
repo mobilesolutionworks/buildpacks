@@ -1,0 +1,8 @@
+api = "0.10"
+
+[buildpack]
+  id = "mobilesolutionworks/rpm"
+  version = "0.0.1"
+
+[[targets]]
+  os = "linux"

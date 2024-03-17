@@ -1,0 +1,29 @@
+# Buildpacks to include in builder
+[[buildpacks]]
+id = "mobilesolutionworks/rpm"
+version = "0.0.1"
+uri = "buildpacks/rpm"
+
+# Extensions to include in builder
+[[extensions]]
+id = "mobilesolutionworks/rpm"
+version = "0.0.1"
+uri = "extensions/rpm"
+
+[[order]]
+[[order.group]]
+id = "mobilesolutionworks/rpm"
+version = "0.0.1"
+
+# Order used for detection
+[[order-extensions]]
+[[order-extensions.group]]
+id = "mobilesolutionworks/rpm"
+version = "0.0.1"
+
+# Base images used to create the builder
+[build]
+image = "yunarta/cnb-oraclelinux9:build"
+[run]
+[[run.images]]
+image = "yunarta/cnb-oraclelinux9:run"

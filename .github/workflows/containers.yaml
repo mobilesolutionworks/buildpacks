@@ -1,0 +1,20 @@
+name: works
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - "containerfiles/**"
+
+jobs:
+  works:
+    name: works
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and Publish
+        run: |
+          docker build ./containerfiles -f containerfiles/build.Containerfile -t yunarta/cnb-oraclelinux9:build
+          docker build ./containerfiles -f containerfiles/run.Containerfile -t yunarta/cnb-oraclelinux9:run

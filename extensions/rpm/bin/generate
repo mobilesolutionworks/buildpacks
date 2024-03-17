@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+# 1. GET ARGS
+output_dir=$CNB_OUTPUT_DIR
+
+echo "RPM Extensions"
+ls -ltR
+
+# 2. GENERATE build.Dockerfile
+cat >> "${output_dir}/build.Dockerfile" <<EOL
+ARG base_image
+FROM \${base_image}
+
+USER root
+RUN yum update -y && yum install -y \
+    rpmdevtools rpm-build rpm-sign \
+    && yum clean all \
+    && rm -rf /var/cache/yum/*
+
+ARG user_id
+USER \${user_id}
+EOL
+
