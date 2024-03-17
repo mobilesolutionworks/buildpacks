@@ -16,6 +16,8 @@ jobs:
 
       - name: Build and Publish
         run: |
+          set -ex
           wget https://github.com/buildpacks/pack/releases/download/v0.33.2/pack-v0.33.2-linux.tgz
           tar xfz pack-v0.33.2-linux.tgz
+          pack config experimental true
           ./pack builder create yunarta/cnb-mobilesolutionworks-builder:oracle9 --config ./builder.toml
