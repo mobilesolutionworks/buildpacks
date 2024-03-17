@@ -1,7 +1,6 @@
 FROM oraclelinux:9 as files
 
 ADD files /files
-RUN chmod 644 /files/etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 
 FROM oraclelinux:9 as oraclelinux
 

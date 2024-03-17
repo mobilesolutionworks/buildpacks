@@ -7,8 +7,8 @@ on:
       - "containerfiles/**"
 
 jobs:
-  works:
-    name: works
+  build-containers:
+    name: build-containers
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
