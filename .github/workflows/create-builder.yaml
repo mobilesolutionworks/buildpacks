@@ -3,8 +3,8 @@ name: create-builder
 on:
   push:
     branches: [ main, develop ]
-    paths:
-      - "!containerfiles/**"
+    paths-ignore:
+      - "containerfiles/**"
 
 jobs:
   create-builder:
